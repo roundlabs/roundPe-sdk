@@ -1,0 +1,53 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/roundpe",
+  "typings": "dist/roundpe.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsc && node dist/roundpe.js",
+    "publish": "tsc && yarn publish"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "roundpe-sdk",
+  "author": "deepanshu004",
+  "module": "dist/roundpe-sdk.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/roundpe-sdk.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/roundpe-sdk.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.1.0",
+    "husky": "^8.0.1",
+    "size-limit": "^8.1.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "request-promise": "^4.2.6"
+  }
+}
