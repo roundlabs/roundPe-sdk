@@ -1,37 +1,42 @@
 import * as rp from 'request-promise';
 import { isNonNullObject } from './helper';
+import { ENV, constant, BASE_URL } from '../constants/constant';
 
 export interface RoundPeAPIPayload {
-    url: string;
-    data?: any;
+  url: string;
+  data?: any;
 }
 
-export class RoundPeAPI {
-
+export class RequestAPI {
   private allowedHeaders = {
     'x-api-key': '',
+    'sharedSecret': '',
   };
 
   private rq: rp.RequestPromiseAPI<any>;
   private _options: any;
 
   constructor(options: any) {
-    this._options = options;
-    
+    this._options = {
+      headers: {
+        'x-api-key': options['x-api-key'],
+      },
+    };
+
     const con = {
-        baseUrl: this._options.hostUrl,
-        json: true,
-        headers: Object.assign(
-          { 'User-Agent': options.ua },
-          this.getValidHeaders(options.headers)
-        )
-    }
+      baseUrl: BASE_URL.DEV,
+      json: true,
+      headers: Object.assign(this.getValidHeaders(this._options.headers)),
+    };
+
+    console.log('req promise config : ', con);
 
     this.rq = rp.defaults(con);
   }
 
   async get(params: RoundPeAPIPayload) {
     try {
+      console.log('params : ', params);
       const res = await this.rq.get({
         url: params.url,
         qs: params.data,
@@ -54,41 +59,6 @@ export class RoundPeAPI {
       this.normalizeError(err);
     }
   }
-
-  // async put(params: RoundPeAPIPayload) {
-  //   try {
-  //     const res = await this.rq.put({
-  //       url: params.url,
-  //       qs: params.data,
-  //     });
-  //     return res;
-  //   } catch (err) {
-  //     this.normalizeError(err);
-  //   }
-  // }
-
-  // async patch(params: RoundPeAPIPayload) {
-  //   try {
-  //     const res = await this.rq.patch({
-  //       url: params.url,
-  //       qs: params.data,
-  //     });
-  //     return res;
-  //   } catch (err) {
-  //     this.normalizeError(err);
-  //   }
-  // }
-
-  // async delete(params: RoundPeAPIPayload) {
-  //   try {
-  //     const res = await this.rq.delete({
-  //       url: params.url,
-  //     });
-  //     return res;
-  //   } catch (err) {
-  //     this.normalizeError(err);
-  //   }
-  // }
 
   private getValidHeaders(headers: any) {
     const result: any = {};
