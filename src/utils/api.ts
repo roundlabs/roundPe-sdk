@@ -1,11 +1,7 @@
 import * as rp from 'request-promise';
 import { isNonNullObject } from './helper';
-import { ENV, constant, BASE_URL } from '../constants/constant';
-
-export interface RoundPeAPIPayload {
-  url: string;
-  data?: any;
-}
+import { BASE_URL } from '../constants/constant';
+import { RoundPeAPIPayload } from './interface';
 
 export class RequestAPI {
   private allowedHeaders = {
@@ -28,22 +24,19 @@ export class RequestAPI {
       json: true,
       headers: Object.assign(this.getValidHeaders(this._options.headers)),
     };
-
-    console.log('req promise config : ', con);
-
     this.rq = rp.defaults(con);
   }
 
   async get(params: RoundPeAPIPayload) {
     try {
-      console.log('params : ', params);
-      const res = await this.rq.get({
+      const response = await this.rq.get({
         url: params.url,
         qs: params.data,
       });
-      return res;
+      return response;
     } catch (err) {
-      this.normalizeError(err);
+      // console.log("axios catch ", err);
+      return this.normalizeError(err);
     }
   }
 
@@ -55,8 +48,8 @@ export class RequestAPI {
       });
       return res;
     } catch (err) {
-      console.log(err);
-      this.normalizeError(err);
+      // console.log("axios catch ", err);
+      return this.normalizeError(err);
     }
   }
 
@@ -76,8 +69,10 @@ export class RequestAPI {
 
   private normalizeError(err: any) {
     throw {
-      statusCode: err.statusCode,
-      error: err.error.error,
+      statusCode: err?.statusCode,
+      success: err?.error.success,
+      message: err?.error.message,
+      data: err?.error.data,
     };
   }
 }

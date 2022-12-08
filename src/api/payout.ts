@@ -1,7 +1,6 @@
-import { RequestAPI } from '../../utils/api';
-import { IRoundPeConfig } from '../../utils/interface';
-import { ENV, constant, BASE_URL } from '../../constants/constant';
-import { RoundPeResourceInterface, ICreatePayout } from '../../utils/interface';
+import { RequestAPI } from '../utils/api';
+import { constant } from '../constants/constant';
+import { RoundPeResourceInterface, ICreatePayout } from '../utils/interface';
 
 export class PayoutApi extends RoundPeResourceInterface {
   private _request: RequestAPI;
@@ -20,44 +19,45 @@ export class PayoutApi extends RoundPeResourceInterface {
 
       return response;
     } catch (error) {
-      console.log(error);
+      console.log('inside chargeApi catch', error);
+      return error;
     }
   }
 
-  async getPayout(payoutCode) {
+  async getPayout(code) {
     try {
       const response = await this._request.post({
         url: this.resourceUrl + constant.GET_PAYOUT,
-        data: payoutCode
+        data: { code },
       });
       return response;
     } catch (error) {
-      console.log(error);
+      console.log('inside chargeApi catch', error);
+      return error;
     }
   }
 
   async getPayoutAvailableTokensInfo() {
     try {
       const response = await this._request.get({
-        url: this.resourceUrl + constant.GET_PAYOUT_AVAILABLE_TOKENS_INFO
+        url: this.resourceUrl + constant.GET_PAYOUT_AVAILABLE_TOKENS_INFO,
       });
       return response;
-
     } catch (error) {
-      console.log(error);
+      console.log('inside chargeApi catch', error);
+      return error;
     }
   }
 
   async getPayoutFees() {
     try {
       const response = await this._request.get({
-        url: this.resourceUrl + constant.GET_PAYOUT_FEES
+        url: this.resourceUrl + constant.GET_PAYOUT_FEES,
       });
       return response;
-
     } catch (error) {
-      console.log(error);
+      console.log('inside chargeApi catch', error);
+      return error;
     }
   }
-
 }

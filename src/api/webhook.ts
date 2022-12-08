@@ -1,6 +1,6 @@
 import crypto from 'crypto';
-import { constant } from '../../constants/constant';
-import { IWebhookData } from '../../utils/interface'; 
+import { constant } from '../constants/constant';
+import { IWebhookData } from '../utils/interface'; 
 
 export const verifyChecksum = (data: IWebhookData, checksum, sharedSecret: string) => {
 
