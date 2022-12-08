@@ -10,7 +10,7 @@ export class PayoutApi extends RoundPeResourceInterface {
     this._request = new RequestAPI(options);
   }
 
-  async createPayout(payoutData: ICreatePayout) {
+  async createPayout(payoutData: ICreatePayout, options?: any) {
     try {
       const response = await this._request.post({
         url: this.resourceUrl + constant.CREATE_PAYOUT,

@@ -10,7 +10,7 @@ export class ChargeApi extends RoundPeResourceInterface {
     this._request = new RequestAPI(options);
   }
 
-  async createCharge(charge) {
+  async createCharge(charge, options?: any) {
     try {
       const response = await this._request.post({
         url: this.resourceUrl + constant.CHARGES,
@@ -24,7 +24,7 @@ export class ChargeApi extends RoundPeResourceInterface {
     }
   }
 
-  async getCharge(chargeCode: string) {
+  async getCharge(chargeCode: string, options?: any) {
     try {
       const response = await this._request.get({
         url: `${this.resourceUrl}${constant.CHARGES}/${chargeCode}`,

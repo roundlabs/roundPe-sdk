@@ -22,18 +22,18 @@ export class RoundPeSDK {
   }
 
   // charge
-  async createCharge(charge: IRoundPeCreateCharge) {
+  async createCharge(charge: IRoundPeCreateCharge, options?: any) {
     try {
-      const response = await this._chargeApi.createCharge(charge);
+      const response = await this._chargeApi.createCharge(charge, options);
       return response;
     } catch (error) {
       return error;
     }
   }
 
-  async getCharge(chargeCode: string) {
+  async getCharge(chargeCode: string, options?: any) {
     try {
-      const response = await this._chargeApi.getCharge(chargeCode);
+      const response = await this._chargeApi.getCharge(chargeCode, options);
       return response;
     } catch (error) {
       return error;
@@ -50,9 +50,9 @@ export class RoundPeSDK {
   }
 
   // payout
-  async createPayout(payoutData: ICreatePayout) {
+  async createPayout(payoutData: ICreatePayout, options?: any) {
     try {
-      const response = await this._payoutApi.createPayout(payoutData);
+      const response = await this._payoutApi.createPayout(payoutData, options);
       return response;
     } catch (error) {
       return error;
