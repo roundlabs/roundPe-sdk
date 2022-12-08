@@ -35,7 +35,6 @@ export class RequestAPI {
       });
       return response;
     } catch (err) {
-      // console.log("axios catch ", err);
       return this.normalizeError(err);
     }
   }
