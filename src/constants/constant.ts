@@ -15,7 +15,7 @@ export const constant = {
   STATUS: 'status',
   GET_FEES_FROM_AMOUNT: 'getFeesFromAmount',
   GET_AVAILABLE_TOKENS_INFO: 'getAvailableTokensInfo',
-  CREATE_PAYOUT: 'createPayouts',
+  CREATE_PAYOUT: 'createPayout',
   GET_PAYOUT: 'getPayout',
   GET_PAYOUT_AVAILABLE_TOKENS_INFO: 'getPayoutAvailableTokensInfo',
   GET_PAYOUT_FEES: 'getPayoutFees',

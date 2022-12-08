@@ -19,7 +19,6 @@ export class PayoutApi extends RoundPeResourceInterface {
 
       return response;
     } catch (error) {
-      console.log('inside chargeApi catch', error);
       return error;
     }
   }

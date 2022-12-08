@@ -5,8 +5,7 @@ import { RoundPeAPIPayload } from './interface';
 
 export class RequestAPI {
   private allowedHeaders = {
-    'x-api-key': '',
-    'sharedSecret': '',
+    'x-api-key': ''
   };
 
   private rq: rp.RequestPromiseAPI<any>;
@@ -47,8 +46,7 @@ export class RequestAPI {
       });
       return res;
     } catch (err) {
-      // console.log("axios catch ", err);
-      return this.normalizeError(err);
+      return this.normalizeError(err); 
     }
   }
 
