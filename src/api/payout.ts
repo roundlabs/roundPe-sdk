@@ -1,6 +1,7 @@
 import { RequestAPI } from '../utils/api';
 import { constant } from '../constants/constant';
 import { RoundPeResourceInterface, ICreatePayout } from '../utils/interface';
+import { filterResponse } from '../utils/helper';
 
 export class PayoutApi extends RoundPeResourceInterface {
   private _request: RequestAPI;
@@ -17,7 +18,8 @@ export class PayoutApi extends RoundPeResourceInterface {
         data: payoutData,
       });
 
-      return response;
+      let responseData = filterResponse(response);
+      return responseData;
     } catch (error) {
       return error;
     }
@@ -29,7 +31,8 @@ export class PayoutApi extends RoundPeResourceInterface {
         url: this.resourceUrl + constant.GET_PAYOUT,
         data: { code },
       });
-      return response;
+      let responseData = filterResponse(response);
+      return responseData;
     } catch (error) {
       console.log('inside chargeApi catch', error);
       return error;
@@ -41,7 +44,8 @@ export class PayoutApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: this.resourceUrl + constant.GET_PAYOUT_AVAILABLE_TOKENS_INFO,
       });
-      return response;
+      let responseData = filterResponse(response);
+      return responseData;
     } catch (error) {
       console.log('inside chargeApi catch', error);
       return error;
@@ -53,7 +57,8 @@ export class PayoutApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: this.resourceUrl + constant.GET_PAYOUT_FEES,
       });
-      return response;
+      let responseData = filterResponse(response);
+      return responseData;
     } catch (error) {
       console.log('inside chargeApi catch', error);
       return error;

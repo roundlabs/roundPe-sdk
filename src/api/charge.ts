@@ -1,6 +1,7 @@
 import { RequestAPI } from '../utils/api';
 import { constant } from '../constants/constant';
 import { RoundPeResourceInterface } from '../utils/interface';
+import { filterResponse } from '../utils/helper';
 
 export class ChargeApi extends RoundPeResourceInterface {
   private _request: RequestAPI;
@@ -17,7 +18,8 @@ export class ChargeApi extends RoundPeResourceInterface {
         data: charge,
       });
 
-      return response;
+      let responseData = filterResponse(response);
+      return responseData;
     } catch (error) {
       console.log('inside chargeApi catch', error);
       return error;
@@ -29,7 +31,8 @@ export class ChargeApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: `${this.resourceUrl}${constant.CHARGES}/${chargeCode}`,
       });
-      return response;
+      let responseData = filterResponse(response);
+      return responseData;
     } catch (error) {
       console.log('inside chargeApi catch ', error);
       return error;
@@ -41,22 +44,13 @@ export class ChargeApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: this.resourceUrl + constant.GET_AVAILABLE_TOKENS_INFO,
       });
-      return response;
+
+      let responseData = filterResponse(response);
+      return responseData;
     } catch (error) {
       console.log('inside chargeApi catch ', error);
       return error;
     }
   }
 
-  async getStatus() {
-    try {
-      const response = await this._request.get({
-        url: this.resourceUrl + constant.STATUS,
-      });
-      return response;
-    } catch (error) {
-      console.log('inside chargeApi catch ', error);
-      return error;
-    }
-  }
 }
