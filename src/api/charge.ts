@@ -2,6 +2,7 @@ import { RequestAPI } from '../utils/api';
 import { constant } from '../constants/constant';
 import { RoundPeResourceInterface } from '../utils/interface';
 import { filterResponse } from '../utils/helper';
+import { ResponseData } from '../response/response';
 
 export class ChargeApi extends RoundPeResourceInterface {
   private _request: RequestAPI;
@@ -31,7 +32,15 @@ export class ChargeApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: `${this.resourceUrl}${constant.CHARGES}/${chargeCode}`,
       });
+      
       let responseData = filterResponse(response);
+
+      // let newResponseData;
+      // if(options && options.rawData) {
+      //   newResponseData = new ResponseData(options, responseData).getRawData();
+      // }
+      console.log("get charge response type : ", responseData);
+      
       return responseData;
     } catch (error) {
       console.log('inside chargeApi catch ', error);

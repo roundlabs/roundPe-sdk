@@ -14,7 +14,7 @@ export class RequestAPI {
   constructor(options: any) {
     this._options = {
       headers: {
-        'x-api-key': options['x-api-key'],
+        'x-api-key': options['x_api_key'],
       },
     };
 

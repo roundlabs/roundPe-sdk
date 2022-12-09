@@ -35,7 +35,7 @@ export interface IGetFeesFromAmount {
 }
 
 export interface IRoundPeConfig {
-  'x-api-key': string;
+  'x_api_key': string;
   sharedSecret: string;
 }
 

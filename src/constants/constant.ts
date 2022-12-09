@@ -21,7 +21,8 @@ export const constant = {
   GET_PAYOUT_FEES: 'getPayoutFees',
   GET_TOKEN_NETWORK_INFO: 'getTokenNetworkInfo',
   VERSION: 'v1/',
-  VERIFIED: 'verified',
+  VERIFIED: 'VERIFIED',
+  NOT_VERIFIED: 'NOT VERIFIED',
 };
 
 export enum HttpStatusCode {

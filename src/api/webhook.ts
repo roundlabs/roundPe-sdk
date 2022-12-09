@@ -11,6 +11,8 @@ export const verifyChecksum = (data: IWebhookData, checksum, sharedSecret: strin
     
     if (signature===checksum) {
       return constant.VERIFIED;
+    } else {
+      return constant.NOT_VERIFIED;
     }
 }
 
