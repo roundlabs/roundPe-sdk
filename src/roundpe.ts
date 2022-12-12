@@ -111,6 +111,7 @@ export class RoundPeSDK {
 
 
 async function test() {
+
   const config = {
     x_api_key: '53667c0971b1-2ee71884-d5e9-4609-9edd-35a0ecbac5d0',
     sharedSecret: 'fea424c5-022d-4280-bb54-52e23e0b5b44',
@@ -140,9 +141,11 @@ async function test() {
   // };
 
   // const response = await roundpe.createCharge(charge);
+  // const { code, name, description, addresses, hostedUrl } = await roundpe.getCharge("6Y893YJ5VJ");
+  // console.log(code, " ", name, " ", description, " ", addresses, " ", hostedUrl);
   
-  // const { name, code, description } = await roundpe.getCharge("B8A3FJPAP9", {rawData: true});
-  // console.log(name, " ",code, " ", description);
+  const { name, code, amount, status, description } = await roundpe.getCharge("6Y893YJ5VJ", {rawData: true});
+  console.log(name, " ",code, " ", description);
   
   // const response2 = await roundpe.getAvailableTokensInfo();
   // console.log(response2);

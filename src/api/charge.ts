@@ -35,10 +35,10 @@ export class ChargeApi extends RoundPeResourceInterface {
       
       let responseData = filterResponse(response);
 
-      // let newResponseData;
-      // if(options && options.rawData) {
-      //   newResponseData = new ResponseData(options, responseData).getRawData();
-      // }
+      if(options && options.rawData) {
+        const obj  = new ResponseData(options, responseData);
+        responseData = await obj.getRawData();
+      }
       console.log("get charge response type : ", responseData);
       
       return responseData;

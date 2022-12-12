@@ -13,9 +13,9 @@ export class ResponseData {
       this._rawData = {
         name: this._responseData['name'],
         code: this._responseData['code'],
-        amount: this._responseData['amount'],
+        amount: this._responseData['amountRequested'],
         status: this._responseData['status'],
-        hosted_url: this._responseData['hosted_url'],
+        hostedUrl: this._responseData['hostedUrl'],
       };
     }
     return this._rawData;
