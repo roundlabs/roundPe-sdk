@@ -3,12 +3,12 @@ export class ResponseData {
   private _responseData: any;
   private _rawData: any;
 
-  constructor(options: any, data: any) {
+  constructor(data: any, options: any) {
     this._rawDataFlag = options['rawData'];
     this._responseData = data;
   }
 
-  async getRawData() {
+  async getChargeRawData() {
     if (this._rawDataFlag) {
       this._rawData = {
         name: this._responseData['name'],
@@ -16,6 +16,19 @@ export class ResponseData {
         amount: this._responseData['amountRequested'],
         status: this._responseData['status'],
         hostedUrl: this._responseData['hostedUrl'],
+      };
+    }
+    return this._rawData;
+  }
+
+  async getPayoutRawData() {
+    if (this._rawDataFlag) {
+      this._rawData = {
+        txHash: this._responseData['txHash'],
+        code: this._responseData['code'],
+        amount: this._responseData['amount'],
+        address: this._responseData['address'],
+        timeline: this._responseData['timeline'],
       };
     }
     return this._rawData;

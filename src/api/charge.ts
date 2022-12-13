@@ -20,6 +20,12 @@ export class ChargeApi extends RoundPeResourceInterface {
       });
 
       let responseData = filterResponse(response);
+      
+      if(options && options.rawData) {
+        const obj  = new ResponseData(responseData, options);
+        responseData = obj.getChargeRawData();
+      }
+
       return responseData;
     } catch (error) {
       console.log('inside chargeApi catch', error);
@@ -34,10 +40,10 @@ export class ChargeApi extends RoundPeResourceInterface {
       });
       
       let responseData = filterResponse(response);
-
+      console.log("get charge response : ", responseData);
       if(options && options.rawData) {
-        const obj  = new ResponseData(options, responseData);
-        responseData = await obj.getRawData();
+        const obj  = new ResponseData(responseData, options );
+        responseData = await obj.getChargeRawData();
       }
       console.log("get charge response type : ", responseData);
       
