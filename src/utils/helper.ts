@@ -4,7 +4,7 @@ export const isNonNullObject = (input: {}) => {
 
 export const filterResponse = (response: any) => {
     if (response && response.data) {
-        return response.data;
+        return response.data.data;
     }
     return response;
 }

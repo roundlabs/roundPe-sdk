@@ -1,14 +1,15 @@
-import * as rp from 'request-promise';
+// import * as rp from 'request-promise';
 import { isNonNullObject } from './helper';
 import { BASE_URL } from '../constants/constant';
 import { RoundPeAPIPayload } from './interface';
+import axios from 'axios';
 
 export class RequestAPI {
   private allowedHeaders = {
     'x-api-key': ''
   };
 
-  private rq: rp.RequestPromiseAPI<any>;
+  private rq;
   private _options: any;
 
   constructor(options: any) {
@@ -18,19 +19,17 @@ export class RequestAPI {
       },
     };
 
-    const con = {
-      baseUrl: BASE_URL.DEV,
-      json: true,
+    this.rq = axios.create({
+      baseURL: BASE_URL.DEV,
       headers: Object.assign(this.getValidHeaders(this._options.headers)),
-    };
-    this.rq = rp.defaults(con);
+    });
   }
 
   async get(params: RoundPeAPIPayload) {
     try {
-      const response = await this.rq.get({
-        url: params.url,
-        qs: params.data,
+      let url = params.url;
+      const response = await this.rq.get(url, {
+        ...params.data,
       });
       return response;
     } catch (err) {
@@ -40,9 +39,9 @@ export class RequestAPI {
 
   async post(params: RoundPeAPIPayload) {
     try {
-      const res = await this.rq.post({
-        url: params.url,
-        body: params.data,
+      let url = params.url;
+      const res = await this.rq.post(url, {
+        ...params.data
       });
       return res;
     } catch (err) {
@@ -65,6 +64,7 @@ export class RequestAPI {
   }
 
   private normalizeError(err: any) {
+    console.log('err', err);
     throw {
       statusCode: err?.statusCode,
       success: err?.error.success,

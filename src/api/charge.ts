@@ -5,7 +5,7 @@ import { filterResponse } from '../utils/helper';
 import { ResponseData } from '../response/response';
 
 export class ChargeApi extends RoundPeResourceInterface {
-  private _request: RequestAPI;
+  private _request;
 
   constructor(options: any) {
     super(constant.VERSION);
@@ -18,7 +18,7 @@ export class ChargeApi extends RoundPeResourceInterface {
         url: this.resourceUrl + constant.CHARGES,
         data: charge,
       });
-
+      
       let responseData = filterResponse(response);
       
       if(options && options.rawData) {
@@ -40,12 +40,10 @@ export class ChargeApi extends RoundPeResourceInterface {
       });
       
       let responseData = filterResponse(response);
-      console.log("get charge response : ", responseData);
       if(options && options.rawData) {
         const obj  = new ResponseData(responseData, options );
         responseData = await obj.getChargeRawData();
       }
-      console.log("get charge response type : ", responseData);
       
       return responseData;
     } catch (error) {
@@ -59,7 +57,7 @@ export class ChargeApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: this.resourceUrl + constant.GET_AVAILABLE_TOKENS_INFO,
       });
-
+      
       let responseData = filterResponse(response);
       return responseData;
     } catch (error) {

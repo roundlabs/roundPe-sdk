@@ -56,6 +56,7 @@ export class PayoutApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: this.resourceUrl + constant.GET_PAYOUT_AVAILABLE_TOKENS_INFO,
       });
+      
       let responseData = filterResponse(response);
       return responseData;
     } catch (error) {
