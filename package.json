@@ -4,8 +4,7 @@
   "main": "dist/roundpe",
   "typings": "dist/roundpe.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
@@ -26,7 +25,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "roundpe-sdk123",
+  "name": "roundpe-sdk12345",
   "author": "deepanshu004",
   "module": "dist/roundpe-sdk.esm.js",
   "size-limit": [

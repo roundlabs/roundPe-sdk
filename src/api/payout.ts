@@ -46,7 +46,6 @@ export class PayoutApi extends RoundPeResourceInterface {
       }
       return responseData;
     } catch (error) {
-      console.log('inside chargeApi catch', error);
       return error;
     }
   }
@@ -60,7 +59,6 @@ export class PayoutApi extends RoundPeResourceInterface {
       let responseData = filterResponse(response);
       return responseData;
     } catch (error) {
-      console.log('inside chargeApi catch', error);
       return error;
     }
   }
@@ -73,7 +71,6 @@ export class PayoutApi extends RoundPeResourceInterface {
       let responseData = filterResponse(response);
       return responseData;
     } catch (error) {
-      console.log('inside chargeApi catch', error);
       return error;
     }
   }
