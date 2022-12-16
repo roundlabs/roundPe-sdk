@@ -273,7 +273,6 @@ const response = await roundpe.getPayout(payoutCode);
 ```
 #### Response
 ```javascript
-
 ```
 
 #### v2
