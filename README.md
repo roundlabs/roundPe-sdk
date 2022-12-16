@@ -17,9 +17,7 @@ Documentation of RoundPe API and their usage is available at [ RoundPe Docs ](ht
 
 ## Getting Started
 
-First, We need to install the roundpe package than use those keys to access all roundpe api's
-
-Instantiate the roundpe instance with x_api_key & sharedSecret. You can obtain the keys from the dashboard app at [Dashboard](https://app.roundpe.com/settings)
+First, We need to install the roundpe package than use those keys to access all roundpe api's.
 
 ### Import Sdk
 
@@ -29,7 +27,7 @@ import RoundPeSDK from 'roundpe-sdk'
 
 ### Initialize Sdk
 
-Instantiate the roundpe instance with x_api_Key & sharedSecret. You can obtain the keys from the dashboard app at https://app.roundpe.com/settings
+Instantiate the roundpe instance with x_api_Key & sharedSecret. You can obtain the keys from the dashboard app at [RoundPe](https://app.roundpe.com/settings)
 
 
 ```javascript
