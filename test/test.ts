@@ -1,4 +1,4 @@
-import { RoundPeSDK } from '../src/roundpe';
+import RoundPeSDK from '../dist/roundpe';
 
 async function testing() {
 
