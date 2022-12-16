@@ -31,7 +31,7 @@ async function testing() {
     // };
   
     // creating charge
-    const response = await roundpe.createCharge(charge);
+    // const response = await roundpe.createCharge(charge);
     // const response = await roundpe.createCharge(charge, {rawData: true});
   
     // getting charge
@@ -45,7 +45,7 @@ async function testing() {
     // const response = await roundpe.createPayout(payoutData);
     // const { code, txHash, amount, address, timeline } = await roundpe.createPayout(payoutData, {rawData: true});
     
-    // const response = await roundpe.getPayout("7JR2Z925");
+    const response = await roundpe.getPayout("SV4PQZWL");
     // const { txHash, code, amount, address, timeline } = await roundpe.getPayout("7JR2Z925", {rawData: true});
 
     

@@ -21,26 +21,22 @@ export class PayoutApi extends RoundPeResourceInterface {
 
       let responseData = filterResponse(response);
 
-      if ( options && options.rawData ) {
-        const obj = new ResponseData(responseData, options);
-        responseData = obj.getPayoutRawData();
-      }
-
       return responseData;
     } catch (error) {
       return error;
     }
   }
 
-  async getPayout(code, options) {
+  async getPayout(code: string, options: any) {
     try {
       const response = await this._request.post({
         url: this.resourceUrl + constant.GET_PAYOUT,
         data: { code },
       });
-      
+
       let responseData = filterResponse(response);
-      if ( options && options.rawData ) {
+
+      if (options && options.rawData) {
         const obj = new ResponseData(responseData, options);
         responseData = obj.getPayoutRawData();
       }
@@ -55,7 +51,7 @@ export class PayoutApi extends RoundPeResourceInterface {
       const response = await this._request.get({
         url: this.resourceUrl + constant.GET_PAYOUT_AVAILABLE_TOKENS_INFO,
       });
-      
+
       let responseData = filterResponse(response);
       return responseData;
     } catch (error) {

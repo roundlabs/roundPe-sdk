@@ -24,13 +24,15 @@ export class ResponseData {
   async getPayoutRawData() {
     if (this._rawDataFlag) {
       this._rawData = {
-        txHash: this._responseData['txHash'],
         code: this._responseData['code'],
         amount: this._responseData['amount'],
+        txHash: this._responseData['txHash'],
         address: this._responseData['address'],
         timeline: this._responseData['timeline'],
       };
     }
+    console.log("raw data : ", this._rawData);
+    
     return this._rawData;
   }
 }

@@ -59,6 +59,7 @@ const charge = {
 const response = await roundpe.createCharge(charge);
 ```
 
+### Response
 ```javascript
 {
   pricingType: 'fixed_price',
@@ -258,7 +259,9 @@ const response = await roundpe.createPayout(payoutData);
 ```
 #### Response
 ```javascript
-
+{ 
+  code: 'D7MMVV3N' 
+}
 ```
 ### Get Payout
 
@@ -273,6 +276,27 @@ const response = await roundpe.getPayout(payoutCode);
 ```
 #### Response
 ```javascript
+{
+  code: '7JR2Z925',
+  amount: 5,
+  token: 'usd-coin',
+  address: '0xed7673037e9c28f0',
+  network: 'flow',
+  timeline: [
+    {
+      time: 'Wed Oct 19 2022 11:27:02 GMT+0000 (Coordinated Universal Time)',
+      status: 'PENDING'
+    },
+    {
+      time: 'Wed Oct 19 2022 11:27:22 GMT+0000 (Coordinated Universal Time)',
+      status: 'COMPLETED'
+    }
+  ],
+  txStatus: 'COMPLETED',
+  createdAt: '2022-10-19T11:27:02.642Z',
+  updatedAt: '2022-10-19T11:27:22.689Z',
+  txHash: '3fef726a18c924699c3fbbf65115992f138bb2d1fd0f0ca469d193ac6f88be3e'
+}
 ```
 
 #### v2
@@ -285,7 +309,22 @@ const response = await roundpe.getPayout(payoutCode);
 ```
 #### Response
 ```javascript
-
+{
+  code: '7JR2Z925',
+  amount: 5,
+  txHash: '9fd51774540f625af672c1f68d06f3408d40e0aba03da8d86a67db4d04e17228',
+  address: '0xed7673037e9c28f0',
+  timeline: [
+    {
+      time: 'Wed Oct 19 2022 11:44:30 GMT+0000 (Coordinated Universal Time)',
+      status: 'PENDING'
+    },
+    {
+      time: 'Wed Oct 19 2022 11:44:50 GMT+0000 (Coordinated Universal Time)',
+      status: 'COMPLETED'
+    }
+  ]
+}
 ```
 
 ### Get Payout Available Token
