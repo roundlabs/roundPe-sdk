@@ -143,7 +143,13 @@ async function testing() {
   // const response = await roundpe.createCharge(charge, {rawData: true});
 
   // getting charge
-  // const response = await roundpe.getCharge("6Y893YJ5VJ");
+  const response1 = await roundpe.getCharge("3E7QRENFU8");
+  console.log(response1);
+  console.log("====================================");
+  
+  const response = await roundpe.getCharge("3E7QRENFU8", { rawData: true });
+console.log(response);
+
   // const { code, name, description, addresses, hostedUrl } = await roundpe.getCharge("6Y893YJ5VJ");
   // console.log(code, " ", name, " ", description, " ", addresses, " ", hostedUrl);
 
@@ -151,9 +157,9 @@ async function testing() {
 
   //payout
   // const response = await roundpe.createPayout(payoutData);
-  // const { code, txHash, amount, address, timeline } = await roundpe.createPayout(payoutData, {rawData: true});
+  // const { code, txHash, amount, address, timeline } = await roundpe.createPayout(payoutData);
 
-  const response = await roundpe.getPayout('7JR2Z925', { rawData: true });
+  // const response = await roundpe.getPayout('7JR2Z925', { rawData: true });
   // const { txHash, code, amount, address, timeline } = await roundpe.getPayout("7JR2Z925", {rawData: true});
 
   // const response2 = await roundpe.getPayoutFees();

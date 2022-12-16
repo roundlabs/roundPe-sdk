@@ -173,7 +173,7 @@ Their are two version of get charge api.
 #### v1
 This api will return the complete JSON object of charge details.
 ```javascript
-const chargeCode = "B8A3FJPAP9";
+const chargeCode = "3E7QRENFU8";
 const response = await roundpe.getCharge(chargeCode);
 ```
 #### Response
@@ -225,7 +225,7 @@ const response = await roundpe.getCharge(chargeCode);
 
 This Api is used to return the rawData data in response, you need to pass rawData as true, By default it is false.
 ```javascript
-const chargeCode = "B8A3FJPAP9";
+const chargeCode = "3E7QRENFU8";
 const options = { rawData: true }
 const response = await roundpe.getCharge(chargeCode, options);
 ```
@@ -238,7 +238,7 @@ const response = await roundpe.getCharge(chargeCode, options);
   code: '3E7QRENFU8',
   amount: 100,
   status: 'EXPIRED',
-  hostedUrl: undefined
+  hostedUrl: 'https://pv-payment-ui.vercel.app/charges/3E7QRENFU8'
 }
 ```
 ### Create Payout
