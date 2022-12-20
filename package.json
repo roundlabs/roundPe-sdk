@@ -1,11 +1,10 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "dist/roundpe",
   "typings": "dist/roundpe.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
@@ -48,6 +47,7 @@
     "typescript": "^4.8.3"
   },
   "dependencies": {
-    "request-promise": "^4.2.6"
+    "axios": "^1.2.1",
+    "crypto": "^1.0.1"
   }
 }
