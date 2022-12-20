@@ -1,4 +1,3 @@
-// import * as rp from 'request-promise';
 import { isNonNullObject } from './helper';
 import { BASE_URL } from '../constants/constant';
 import { RoundPeAPIPayload } from './interface';
@@ -20,7 +19,7 @@ export class RequestAPI {
     };
 
     this.rq = axios.create({
-      baseURL: BASE_URL.DEV,
+      baseURL: BASE_URL.PROD,
       headers: Object.assign(this.getValidHeaders(this._options.headers)),
     });
   }
@@ -64,7 +63,6 @@ export class RequestAPI {
   }
 
   private normalizeError(err: any) {
-    console.log('err', err);
     throw {
       statusCode: err?.statusCode,
       success: err?.error.success,

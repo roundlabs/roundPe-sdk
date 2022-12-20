@@ -31,7 +31,6 @@ export class ResponseData {
         timeline: this._responseData['timeline'],
       };
     }
-    console.log("raw data : ", this._rawData);
     
     return this._rawData;
   }

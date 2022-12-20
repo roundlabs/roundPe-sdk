@@ -5,8 +5,8 @@ export const ENV = {
 };
 
 export const BASE_URL = {
-  DEV: 'https://dev-api.round.xyz/',
-  STAGE: 'https://dev-api.round.xyz/',
+  // DEV: 'https://dev-api.round.xyz/',
+  // STAGE: 'https://dev-api.round.xyz/',
   PROD: 'https://dev-api.round.xyz/',
 };
 

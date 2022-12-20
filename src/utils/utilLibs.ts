@@ -19,7 +19,6 @@ export class UtilApi extends RoundPeResourceInterface {
       let responseData = filterResponse(response);
       return responseData;
     } catch (error) {
-      console.log('inside chargeApi catch', error);
       return error;
     }
   }
@@ -32,7 +31,6 @@ export class UtilApi extends RoundPeResourceInterface {
       let responseData = filterResponse(response);
       return responseData;
     } catch (error) {
-      console.log('inside chargeApi catch', error);
       return error;
     }
   }

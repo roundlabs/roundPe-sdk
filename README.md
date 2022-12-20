@@ -156,7 +156,7 @@ const response = await roundpe.createCharge(charge, {rawData: true});
 ```javascript
 {
   name: 'John Doeo',
-  code: '8S5BCCGAZW',
+  code: '3E7QRENFU8',
   amount: 100,
   status: 'NEW',
   hostedUrl: 'https://pv-payment-ui.vercel.app/charges/8S5BCCGAZW'
@@ -269,13 +269,13 @@ This API can be used to get the details of a payout, Their are two versions of g
 This api will return the complete JSON object of payout details.
 
 ```javascript
-const payoutCode = "7JR2Z925"
+const payoutCode = "D7MMVV3N"
 const response = await roundpe.getPayout(payoutCode);
 ```
 #### Response
 ```javascript
 {
-  code: '7JR2Z925',
+  code: 'D7MMVV3N',
   amount: 5,
   token: 'usd-coin',
   address: '0xed7673037e9c28f0',
@@ -302,13 +302,13 @@ This Api is used to return the payout raw data in response, you need to pass raw
 
 ```javascript
 const options = { rawData: true }
-const payoutCode = "7JR2Z925"
+const payoutCode = "D7MMVV3N"
 const response = await roundpe.getPayout(payoutCode);
 ```
 #### Response
 ```javascript
 {
-  code: '7JR2Z925',
+  code: 'D7MMVV3N',
   amount: 5,
   txHash: '9fd51774540f625af672c1f68d06f3408d40e0aba03da8d86a67db4d04e17228',
   address: '0xed7673037e9c28f0',
