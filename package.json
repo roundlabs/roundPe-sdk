@@ -3,6 +3,7 @@
   "license": "MIT",
   "main": "dist/roundpe",
   "typings": "dist/roundpe.d.ts",
+  "repository":"https://github.com/roundlabs/roundPe-sdk/tree/main",
   "files": [
     "dist"
   ],
@@ -25,7 +26,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "roundpe-sdk",
+  "name": "tested-roundpe-sdk",
   "author": "deepanshu004",
   "module": "dist/roundpe-sdk.esm.js",
   "size-limit": [
