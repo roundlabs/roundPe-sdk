@@ -54,7 +54,7 @@ const charge = {
   withFees: true,
 };
 
-const response = await roundpe.createCharge(charge);
+const response = await roundpeSDK.createCharge(charge);
 ```
 
 ### Response
@@ -149,7 +149,7 @@ const charge = {
       withFees: true,
 };
 
-const response = await roundpe.createCharge(charge, {rawData: true});
+const response = await roundpeSDK.createCharge(charge, {rawData: true});
 
 ```
 ### Response
@@ -172,7 +172,7 @@ Their are two version of get charge api.
 This api will return the complete JSON object of charge details.
 ```javascript
 const chargeCode = "3E7QRENFU8";
-const response = await roundpe.getCharge(chargeCode);
+const response = await roundpeSDK.getCharge(chargeCode);
 ```
 #### Response
 ```javascript
@@ -225,7 +225,7 @@ This Api is used to return the rawData data in response, you need to pass rawDat
 ```javascript
 const chargeCode = "3E7QRENFU8";
 const options = { rawData: true }
-const response = await roundpe.getCharge(chargeCode, options);
+const response = await roundpeSDK.getCharge(chargeCode, options);
 ```
 
 #### Response
@@ -253,7 +253,7 @@ const payoutData = {
   },
 };
 
-const response = await roundpe.createPayout(payoutData);
+const response = await roundpeSDK.createPayout(payoutData);
 ```
 #### Response
 ```javascript
@@ -270,7 +270,7 @@ This api will return the complete JSON object of payout details.
 
 ```javascript
 const payoutCode = "D7MMVV3N"
-const response = await roundpe.getPayout(payoutCode);
+const response = await roundpeSDK.getPayout(payoutCode);
 ```
 #### Response
 ```javascript
@@ -303,7 +303,7 @@ This Api is used to return the payout raw data in response, you need to pass raw
 ```javascript
 const options = { rawData: true }
 const payoutCode = "D7MMVV3N"
-const response = await roundpe.getPayout(payoutCode);
+const response = await roundpeSDK.getPayout(payoutCode);
 ```
 #### Response
 ```javascript
@@ -328,7 +328,7 @@ const response = await roundpe.getPayout(payoutCode);
 ### Get Payout Available Token
 
 ```javascript
-const response = await roundpe.getPayoutAvailableTokensInfo();
+const response = await roundpeSDK.getPayoutAvailableTokensInfo();
 ```
 #### Response
 ```javascript
@@ -424,7 +424,7 @@ const response = await roundpe.getPayoutAvailableTokensInfo();
 
 
 ```javascript
-const response = await roundpe.getPayoutFees();
+const response = await roundpeSDK.getPayoutFees();
 ```
 #### Response
 ```javascript
@@ -444,7 +444,7 @@ const response = await roundpe.getPayoutFees();
 ### Get Status
 
 ```javascript
-const response = await roundpe.getStatus();
+const response = await roundpeSDK.getStatus();
 ```
 #### Response
 ```javascript
@@ -457,7 +457,7 @@ const response = await roundpe.getStatus();
 
 This API returns the networks and tokens available for accepting payments.
 ```javascript
-const response = await roundpe.getAvailableTokensInfo();
+const response = await roundpeSDK.getAvailableTokensInfo();
 ```
 #### Response
 ```javascript
@@ -677,5 +677,5 @@ For the above data, the x-webhook-signature header contains the checksum. In cas
 
 ```javascript
 const checkSum = "X-WEBHOOK-SIGNATURE";
-const response = await roundpe.verifyChecksum(eventData, checkSum);
+const response = await roundpeSDK.verifyChecksum(eventData, checkSum);
 ```
