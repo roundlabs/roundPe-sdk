@@ -25,7 +25,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "testing-roundpe-sdk",
+  "name": "roundpe-sdk",
   "author": "deepanshu004",
   "module": "dist/roundpe-sdk.esm.js",
   "size-limit": [
