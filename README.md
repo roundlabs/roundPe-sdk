@@ -42,8 +42,41 @@ const roundpe = new RoundPeSDK({
 A sample implementation for creating charge is shown below:
 
 #### v1
+
 ```javascript
-const charge = {
+const chargeData = {
+      name: 'John Doeo',
+      description: 'Test Charge',
+      localPrice: {
+        amount: 100,
+        currency: 'USD',
+      },
+      pricingType: 'fixed_price',
+      withFees: true,
+};
+
+const response = await roundpeSDK.createCharge(chargeData);
+```
+
+#### Response
+```javascript
+{
+  name: 'John Doeo',
+  description: 'Test Charge',
+  status: 'NEW',
+  code: '73LBU2ST1G',
+  amount: 100,
+  payments: [],
+  hostedUrl: 'https://payment.roundpe.com/charges/73LBU2ST1G',
+  createdAt: '2022-12-21T05:43:14.090Z',
+  expiresAt: 'Wed Dec 21 2022 05:48:14 GMT+0000 (Coordinated Universal Time)'
+}
+```
+
+
+#### v2
+```javascript
+const chargeData = {
   name: 'John Doeo',
   description: 'Test Charge',
   localPrice: {
@@ -54,10 +87,11 @@ const charge = {
   withFees: true,
 };
 
-const response = await roundpeSDK.createCharge(charge);
+const response = await roundpeSDK.createCharge(chargeData, {rawData: true});
+
 ```
 
-### Response
+#### Response
 ```javascript
 {
   pricingType: 'fixed_price',
@@ -98,7 +132,7 @@ const response = await roundpeSDK.createCharge(charge);
   payments: [],
   createdAt: '2022-12-16T03:55:55.940Z',
   updatedAt: '2022-12-16T03:55:55.940Z',
-  hostedUrl: 'https://pv-payment-ui.vercel.app/charges/3E7QRENFU8',
+  hostedUrl: 'https://payment.roundpe.com/charges/73LBU2ST1G',
   networkInfo: {
     flow: {
       name: 'Flow (Testnet)',
@@ -136,32 +170,6 @@ const response = await roundpeSDK.createCharge(charge);
 }
 ```
 
-#### v2
-```javascript
-const charge = {
-      name: 'John Doeo',
-      description: 'Test Charge',
-      localPrice: {
-        amount: 100,
-        currency: 'USD',
-      },
-      pricingType: 'fixed_price',
-      withFees: true,
-};
-
-const response = await roundpeSDK.createCharge(charge, {rawData: true});
-
-```
-### Response
-```javascript
-{
-  name: 'John Doeo',
-  code: '3E7QRENFU8',
-  amount: 100,
-  status: 'NEW',
-  hostedUrl: 'https://pv-payment-ui.vercel.app/charges/8S5BCCGAZW'
-}
-```
 
 ### Get Charge
 
@@ -171,14 +179,40 @@ Their are two version of get charge api.
 #### v1
 This api will return the complete JSON object of charge details.
 ```javascript
-const chargeCode = "3E7QRENFU8";
+const chargeCode = "73LBU2ST1G";
 const response = await roundpeSDK.getCharge(chargeCode);
 ```
+#### Response
+
+```javascript
+{
+  name: 'John Doeo',
+  description: 'Test Charge',
+  status: 'NEW',
+  code: '73LBU2ST1G',
+  amount: 100,
+  payments: [],
+  hostedUrl: 'https://payment.roundpe.com/charges/73LBU2ST1G',
+  createdAt: '2022-12-21T05:43:14.090Z',
+  expiresAt: 'Wed Dec 21 2022 05:48:14 GMT+0000 (Coordinated Universal Time)'
+}
+```
+
+#### v2
+
+This Api is used to return the rawData data in response, you need to pass rawData as true, By default it is false.
+```javascript
+const chargeCode = "73LBU2ST1G";
+const options = { rawData: true }
+
+const response = await roundpeSDK.getCharge(chargeCode, options);
+```
+
 #### Response
 ```javascript
 {
   pricingType: 'fixed_price',
-  code: '3E7QRENFU8',
+  code: '73LBU2ST1G',
   name: 'John Doeo',
   supportedNetworks: [ 'flow' ],
   supportedTokens: { flow: [ 'flow', 'fusd', 'usd-coin', 'tusdt', 'blocto-token' ] },
@@ -215,30 +249,11 @@ const response = await roundpeSDK.getCharge(chargeCode);
   payments: [],
   createdAt: '2022-12-16T03:55:55.940Z',
   updatedAt: '2022-12-16T03:55:55.940Z',
-  hostedUrl: 'https://pv-payment-ui.vercel.app/charges/3E7QRENFU8'
+  hostedUrl: 'https://payment.roundpe.com/charges/73LBU2ST1G'
 }
 ```
 
-#### v2
 
-This Api is used to return the rawData data in response, you need to pass rawData as true, By default it is false.
-```javascript
-const chargeCode = "3E7QRENFU8";
-const options = { rawData: true }
-const response = await roundpeSDK.getCharge(chargeCode, options);
-```
-
-#### Response
-
-```javascript
-{
-  name: 'John Doeo',
-  code: '3E7QRENFU8',
-  amount: 100,
-  status: 'EXPIRED',
-  hostedUrl: 'https://pv-payment-ui.vercel.app/charges/3E7QRENFU8'
-}
-```
 ### Create Payout
 
 A sample implementation for creating payout is shown below:
@@ -277,6 +292,35 @@ const response = await roundpeSDK.getPayout(payoutCode);
 {
   code: 'D7MMVV3N',
   amount: 5,
+  txHash: '9fd51774540f625af672c1f68d06f3408d40e0aba03da8d86a67db4d04e17228',
+  address: '0xed7673037e9c28f0',
+  timeline: [
+    {
+      time: 'Wed Oct 19 2022 11:44:30 GMT+0000 (Coordinated Universal Time)',
+      status: 'PENDING'
+    },
+    {
+      time: 'Wed Oct 19 2022 11:44:50 GMT+0000 (Coordinated Universal Time)',
+      status: 'COMPLETED'
+    }
+  ]
+}
+```
+
+
+#### v2
+This Api is used to return the payout raw data in response, you need to pass rawData as true, By default it is false.
+
+```javascript
+const options = { rawData: true }
+const payoutCode = "D7MMVV3N"
+const response = await roundpeSDK.getPayout(payoutCode);
+```
+#### Response
+```javascript
+{
+  code: 'D7MMVV3N',
+  amount: 5,
   token: 'usd-coin',
   address: '0xed7673037e9c28f0',
   network: 'flow',
@@ -294,34 +338,6 @@ const response = await roundpeSDK.getPayout(payoutCode);
   createdAt: '2022-10-19T11:27:02.642Z',
   updatedAt: '2022-10-19T11:27:22.689Z',
   txHash: '3fef726a18c924699c3fbbf65115992f138bb2d1fd0f0ca469d193ac6f88be3e'
-}
-```
-
-#### v2
-This Api is used to return the payout raw data in response, you need to pass rawData as true, By default it is false.
-
-```javascript
-const options = { rawData: true }
-const payoutCode = "D7MMVV3N"
-const response = await roundpeSDK.getPayout(payoutCode);
-```
-#### Response
-```javascript
-{
-  code: 'D7MMVV3N',
-  amount: 5,
-  txHash: '9fd51774540f625af672c1f68d06f3408d40e0aba03da8d86a67db4d04e17228',
-  address: '0xed7673037e9c28f0',
-  timeline: [
-    {
-      time: 'Wed Oct 19 2022 11:44:30 GMT+0000 (Coordinated Universal Time)',
-      status: 'PENDING'
-    },
-    {
-      time: 'Wed Oct 19 2022 11:44:50 GMT+0000 (Coordinated Universal Time)',
-      status: 'COMPLETED'
-    }
-  ]
 }
 ```
 
