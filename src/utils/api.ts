@@ -30,6 +30,7 @@ export class RequestAPI {
       const response = await this.rq.get(url, {
         ...params.data,
       });
+
       return response;
     } catch (err) {
       return this.normalizeError(err);
@@ -64,10 +65,10 @@ export class RequestAPI {
 
   private normalizeError(err: any) {
     throw {
-      statusCode: err?.statusCode,
-      success: err?.error.success,
-      message: err?.error.message,
-      data: err?.error.data,
+      status: err?.response?.status,
+      success: err?.response?.data?.success,
+      message: err?.response?.data?.message,
+      data: err?.response?.data?.data,
     };
   }
 }

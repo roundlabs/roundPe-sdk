@@ -33,11 +33,11 @@ export class PayoutApi extends RoundPeResourceInterface {
         url: this.resourceUrl + constant.GET_PAYOUT,
         data: { code },
       });
-
+      
       let responseData = filterResponse(response);
 
-      if (options && options.rawData) {
-        const obj = new ResponseData(responseData, options);
+      if (!options) {
+        const obj = new ResponseData(responseData);
         responseData = obj.getPayoutRawData();
       }
       return responseData;

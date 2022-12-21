@@ -21,8 +21,8 @@ export class ChargeApi extends RoundPeResourceInterface {
       
       let responseData = filterResponse(response);
       
-      if(options && options?.rawData) {
-        const obj  = new ResponseData(responseData, options);
+      if(!options) {
+        const obj  = new ResponseData(responseData);
         responseData = obj.getChargeRawData();
       }
 
@@ -39,8 +39,8 @@ export class ChargeApi extends RoundPeResourceInterface {
       });
       
       let responseData = filterResponse(response);
-      if(options && options?.rawData) {
-        const obj  = new ResponseData(responseData, options );
+      if(!options) {
+        const obj  = new ResponseData(responseData );
         responseData = await obj.getChargeRawData();
       }
       
