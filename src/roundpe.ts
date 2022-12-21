@@ -8,7 +8,7 @@ import {
   ICreatePayout,
 } from './utils/interface';
 
-export default class RoundPeSDK {
+export class RoundPeSDK {
   private _chargeApi;
   private _payoutApi;
   private _utilApi;
