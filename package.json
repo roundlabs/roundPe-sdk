@@ -26,7 +26,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "roundpe-sdk-test",
+  "name": "roundpe-sdk",
   "author": "Deepanshu Chahal",
   "module": "dist/roundpe-sdk.esm.js",
   "publishConfig": {
