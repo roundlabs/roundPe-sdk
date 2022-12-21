@@ -115,3 +115,7 @@ export class RoundPeSDK {
     }
   }
 }
+
+module.exports = RoundPeSDK;
+module.exports.RoundPeSDK = RoundPeSDK;
+module.exports.default = RoundPeSDK;
