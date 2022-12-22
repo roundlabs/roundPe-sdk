@@ -116,4 +116,4 @@ class RoundPeSDK {
   }
 }
 
-module.exports = RoundPeSDK;
+export = RoundPeSDK;
