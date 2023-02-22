@@ -1,5 +1,5 @@
 {
-  "version": "0.0.20",
+  "version": "0.0.23",
   "license": "MIT",
   "main": "dist/roundpe",
   "typings": "dist/roundpe.d.ts",
@@ -11,8 +11,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsc && node dist/roundpe.js",
-    "publish": "tsc && yarn publish"
+    
   },
   "peerDependencies": {},
   "husky": {
